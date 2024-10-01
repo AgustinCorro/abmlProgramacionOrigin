@@ -13,12 +13,14 @@
 </head>
 <body>
     <header>
+        <h1>Seleccione a que direccion del sistema quiere dirigirse</h1>
         <nav>
             <ul>
-                <li><a href="../panel/publicaUsuarios/archivosFiltro/agregarNoticias.php">Noticias</a></li>
-                <li><a href="../panel/publicaUsuarios/archivosFiltro/agregarCategorias.php">Categorias</a></li>
+                <li><a href="../panel/archivosFiltro/agregarNoticias.php">Agregar Noticias</a></li>
+                <li><a href="../panel/archivosFiltro/agregarCategorias.php">Agregar Categorias</a></li>
                 <li><a href="">Usuarios</a></li>
                 <li><a href="">Cerrar sesion</a></li>
+                <li><a href="../publica/index.php">Listado de Noticias</a></li>
             </ul>
         </nav>
     </header>
