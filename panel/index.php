@@ -18,7 +18,7 @@
             <ul>
                 <li><a href="../panel/archivosFiltro/agregarNoticias.php">Agregar Noticias</a></li>
                 <li><a href="../panel/archivosFiltro/agregarCategorias.php">Agregar Categorias</a></li>
-                <li><a href="">Usuarios</a></li>
+                <li><a href="../panel/publicaUsuarios/login.php">Usuarios</a></li>
                 <li><a href="">Cerrar sesion</a></li>
                 <li><a href="../publica/index.php">Listado de Noticias</a></li>
             </ul>

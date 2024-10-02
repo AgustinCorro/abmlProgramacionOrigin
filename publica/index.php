@@ -33,5 +33,6 @@ $stmt->close();
         <p><?php echo $fila->fecha?></p>
         <?php } ?>
     </div>  
+    <button><a href="../panel/index.php">Volver al menu principal</a></button>
 </body>
 </html>
