@@ -10,14 +10,16 @@ $textoInformativo = isset($_POST["textoInformativo"]) ? $_POST["textoInformativo
 //$imagen ;
 //$categoria = isset($_POST["categoria"]) ? $_POST["categoria"] : "";
 
-//consulta de agregar noticia
-$stmt = $conx->prepare("INSERT INTO noticias (titulo, descripcion, fecha, textoInformativo) VALUES (?, ?, ?, ?)");
+$idObligatorio = isset($_POST["idObligatorio"]) ? $_POST["idObligatorio"] : "";
 
-$stmt->bind_param("ssss" ,$titulo, $descripcion, $fecha, $textoInformativo);
-$stmt->execute();
-$stmt->close();
-
-
+if($idObligatorio == "1"){
+    //consulta de agregar noticia
+    $stmt = $conx->prepare("INSERT INTO noticias (titulo, descripcion, fecha, textoInformativo) VALUES (?, ?, ?, ?)");
+    
+    $stmt->bind_param("ssss" ,$titulo, $descripcion, $fecha, $textoInformativo);
+    $stmt->execute();
+    $stmt->close();   
+}
 
 //TERMINA ETIQUETA DE PHP
 ?>
@@ -33,8 +35,8 @@ $stmt->close();
     <p>Agregue una nueva noticia</p>
     <div>
         <form method="POST">
-
-            <input type="hidden" name="id">
+            <input type="hidden" name="idObligatorio">
+            <input type="hidden" name="id" value="1">
 
             <label>Agregue titulo</label>
             <input type="text" placeholder="Titulo" name="titulo"><br>

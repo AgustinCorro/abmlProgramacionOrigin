@@ -86,7 +86,7 @@ $usuario = $resultado->fetch_object();
 $stmt->close();
 //no existe
 if($usuario === null){
-$id = 0;
+  $id = 0;
   $nombre = "";  
   $fecha_creacion = date("Y-m-d H:i:s");
   $descripcion = "";
