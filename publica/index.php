@@ -28,6 +28,8 @@ $stmt->close();
         <a href="../publica/listadoNoticias.php">Ir al listado de noticias</a>
         <br>
         <a href="../panel/login.php">Ingresar como administrador</a>
+        <br>
+        <a href="../panel/publicaGeneral/index.php">Volver al panel de admin</a>
     </div>
 </body>
 </html>
