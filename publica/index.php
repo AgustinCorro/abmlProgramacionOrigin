@@ -24,29 +24,10 @@ $stmt->close();
     <title>Document</title>
 </head>
 <body>
-    <?php foreach($resultadoFinal as $fila){ ?>
-        <div>
-            <h2><?php echo $fila->titulo ?></h2>
-            <h4><?php echo $fila->descripcion ?></h4>
-            <p><?php echo $fila->fecha ?></p> 
-            <!-- con el a veo el detalle de la noticia en detalle.php -->
-            <a href="../publica/detalle.php?id=<?php echo $fila->id ?>">Ver detalle</a>
-            <!-- con el form mando por get el id de mi noticia para que en eliminar.php me tome ese id y con el delete from elimine el registro de la base de datos -->
-            <form action="../panel/eliminarNoticia/eliminar.php" method="GET">
-                <input type="hidden" value="<?php echo $fila->id ?>" name="id">
-                <input type="submit" value="Eliminar noticia">
-            </form>
-            <form action="../panel/editarNoticia/editar.php" method="POST">
-                <input type="hidden" value="<?php echo $fila->id ?>" name="id">
-                <input type="hidden" value="<?php echo $fila->titulo ?>" name="titulo">
-                <input type="hidden" value="<?php echo $fila->descripcion ?>" name="descripcion">
-                <input type="hidden" value="<?php echo $fila->textoInformativo ?>" name="textoInformativo">
-                <input type="hidden" value="<?php echo $fila->fecha ?>" name="fehca">
-                <input type="submit" value="Editar noticia">
-            </form>
-        </div>  
-        <?php } ?>
+    <div>
+        <a href="../publica/listadoNoticias.php">Ir al listado de noticias</a>
         <br>
-        <button><a href="../panel/index.php">Volver al menu principal</a></button>
+        <a href="../panel/login.php">Ingresar como administrador</a>
+    </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
 
 require_once("../dataBase/db.php");
-
+require_once("../privadaUsuarios/validar.php");
 $categoria = isset($_POST["categoria"]) ? $_POST["categoria"] : "";
 
 $stmt = $conx->prepare("INSERT INTO categorias (nombre) VALUES (?)");
@@ -31,6 +31,6 @@ $stmt->close();
         <!-- <input type="text" placeholder="Agregar categoria"><br> -->
         <input type="submit" placeholder="Agregar">
     </form>
-    <button><a href="../index.php">Volver al menu principal</a></button>
+    <button><a href="../publicaGeneral/index.php">Volver al menu principal</a></button>
 </body>
 </html>

@@ -19,7 +19,7 @@ if($editarFormulario == "1"){
         $stmt->execute();
         $stmt->close();
     }
-    header("Location: ../../publica/index.php");
+    header("Location: ../publicaNoticias/index.php");
     exit();
 }
 

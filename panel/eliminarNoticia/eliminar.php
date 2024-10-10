@@ -10,7 +10,7 @@ $stmt->bind_param("i", $id);
 $stmt->execute();
 $stmt->close();
 
-header("Location: ../../publica/index.php");
+header("Location: ../publicaNoticias/index.php");
 exit();
 ?>
 

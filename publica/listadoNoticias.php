@@ -1,12 +1,7 @@
 <?php
 require_once("../panel/dataBase/db.php");
 
-$id = isset($_GET["id"]) ? $_GET["id"] : 0;
-
-$stmt = $conx->prepare("SELECT * FROM noticias WHERE id = ?");
-
-$stmt->bind_param("s", $id);
-
+$stmt = $conx->prepare("SELECT * FROM noticias");
 $stmt->execute();
 
 
@@ -33,10 +28,12 @@ $stmt->close();
         <div>
             <h2><?php echo $fila->titulo ?></h2>
             <h4><?php echo $fila->descripcion ?></h4>
-            <!-- <p><?php echo $fila->fecha ?></p> -->
-            <p><?php echo $fila->textoInformativo ?></p>
+            <p><?php echo $fila->fecha ?></p> 
+            <!-- con el a veo el detalle de la noticia en detalle.php -->
+            <a href="../publica/detalle.php?id=<?php echo $fila->id ?>">Ver detalle</a>
         </div>  
-    <?php }; ?>
-    <button><a href="../publica/listadoNoticias.php">Volver al listado</a></button>
+        <?php } ?>
+        <br>
+        <button><a href="../publica/index.php">Volver al menu principal</a></button>
 </body>
 </html>

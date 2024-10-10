@@ -106,7 +106,7 @@ if($usuario === null){
 
     <input type="hidden" value="1" name="envio_formulario">
 
-    <input type="hidden" name="id" value="<?php  ?>">
+    <input type="hidden" name="idFormulario" value="0<?php //echo $idFormulario ?>">
 
     <label>Ingrese su nombre</label>
     <input type="text" value="<?php echo $nombre ?>" name="nombre">

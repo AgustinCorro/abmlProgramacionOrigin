@@ -1,5 +1,5 @@
 <?php
-require_once("../dataBase/db.php");
+require_once("../panel/dataBase/db.php");
 //iniciar sesion
 @session_start();
 
@@ -22,7 +22,7 @@ if(!empty($email) && !empty($password)){
     }else{
         //iniciar session
         $_SESSION["id"] = $usuario->id;  
-        header("Location: ../privadaUsuarios/listado.php");// cambie ruta sacar ../
+        header("Location: ../panel/publicaGeneral/index.php");// cambie ruta sacar ../
         exit();
     }
 }

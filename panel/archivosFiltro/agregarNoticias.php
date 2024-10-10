@@ -1,7 +1,7 @@
 <?php
 
 require_once("../dataBase/db.php");
-
+require_once("../privadaUsuarios/validar.php");
 // $id = isset($_POST["id"]) ? $_POST ["id"] : 0;
 $titulo = isset($_POST["titulo"]) ? $_POST["titulo"] : "";
 $descripcion = isset($_POST["descripcion"]) ? $_POST["descripcion"] : "";
@@ -10,16 +10,27 @@ $textoInformativo = isset($_POST["textoInformativo"]) ? $_POST["textoInformativo
 //$imagen ;
 //$categoria = isset($_POST["categoria"]) ? $_POST["categoria"] : "";
 
-$idObligatorio = isset($_POST["idObligatorio"]) ? $_POST["idObligatorio"] : "";
+$idObligatorio = isset($_POST["idObligatorio"]) ? $_POST["idObligatorio"] : "0";
+$idFormulario = isset($_POST["idFormulario"]) ? $_POST["idFormulario"] : "0";
 
-if($idObligatorio == "1"){
-    //consulta de agregar noticia
-    $stmt = $conx->prepare("INSERT INTO noticias (titulo, descripcion, fecha, textoInformativo) VALUES (?, ?, ?, ?)");
+
+if($idObligatorio == "1"){   
+    $error = 0;
+
+    if($error == 0){
+        if($idFormulario == "1"){
+            //consulta de agregar noticia
+        $stmt = $conx->prepare("INSERT INTO noticias (titulo, descripcion, fecha, textoInformativo) VALUES (?, ?, ?, ?)");
     
-    $stmt->bind_param("ssss" ,$titulo, $descripcion, $fecha, $textoInformativo);
-    $stmt->execute();
-    $stmt->close();   
+        $stmt->bind_param("ssss" ,$titulo, $descripcion, $fecha, $textoInformativo);
+        $stmt->execute();
+        $stmt->close(); 
+        }
+        header("Location: ../publicaNoticias/index.php");
+        exit();
+    }
 }
+
 
 //TERMINA ETIQUETA DE PHP
 ?>
@@ -34,8 +45,9 @@ if($idObligatorio == "1"){
 <body>
     <p>Agregue una nueva noticia</p>
     <div>
-        <form method="POST">
-            <input type="hidden" name="idObligatorio">
+        <form action="agregarNoticias.php" method="POST">
+            <input type="hidden" name="idObligatorio" value="1">
+            <input type="hidden"  name="idFormulario" value="1">
             <input type="hidden" name="id" value="1">
 
             <label>Agregue titulo</label>
@@ -62,7 +74,7 @@ if($idObligatorio == "1"){
 
             <input type="submit">
         </form>
-        <button><a href="../index.php">Volver al menu principal</a></button>
+        <button><a href="../publicaGeneral/index.php">Volver al menu principal</a></button>
     </div>
 </body>
 </html>
