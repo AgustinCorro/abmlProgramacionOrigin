@@ -9,7 +9,6 @@ $stmt->bind_param("s", $id);
 
 $stmt->execute();
 
-
 $resultadoSTMT = $stmt->get_result();
 $resultadoFinal = [];
 

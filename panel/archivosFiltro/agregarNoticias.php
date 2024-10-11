@@ -8,7 +8,7 @@ $descripcion = isset($_POST["descripcion"]) ? $_POST["descripcion"] : "";
 $fecha = isset($_POST["fecha"]) ? $_POST["fecha"] : date("Y-m-d H:i:s");
 $textoInformativo = isset($_POST["textoInformativo"]) ? $_POST["textoInformativo"]: "";
 //$imagen ;
-//$categoria = isset($_POST["categoria"]) ? $_POST["categoria"] : "";
+$categoria = isset($_POST["categoria"]) ? $_POST["categoria"] : "";
 
 $idObligatorio = isset($_POST["idObligatorio"]) ? $_POST["idObligatorio"] : "0";
 $idFormulario = isset($_POST["idFormulario"]) ? $_POST["idFormulario"] : "0";
@@ -20,9 +20,9 @@ if($idObligatorio == "1"){
     if($error == 0){
         if($idFormulario == "1"){
             //consulta de agregar noticia
-        $stmt = $conx->prepare("INSERT INTO noticias (titulo, descripcion, fecha, textoInformativo) VALUES (?, ?, ?, ?)");
+        $stmt = $conx->prepare("INSERT INTO noticias (titulo, descripcion, fecha, textoInformativo, id_categoria) VALUES (?, ?, ?, ?, ?)");
     
-        $stmt->bind_param("ssss" ,$titulo, $descripcion, $fecha, $textoInformativo);
+        $stmt->bind_param("ssssi" ,$titulo, $descripcion, $fecha, $textoInformativo, $categoria);
         $stmt->execute();
         $stmt->close(); 
         }
@@ -64,13 +64,23 @@ if($idObligatorio == "1"){
             
             <label>Añadir imagen</label>
             <h5>añadir imagen</h5>
+            <?php 
+                //AGREGUE EL SELECT PARA FILTRAR POR ID_CATEGORIA EN LATABLA DE NOTICIAS, HACER EL INSERT CABIAR ESTRUCTURA DE LA TABLA Y CAMBIAR LA CONSULTA EN EL LISTADO DE NOTICIAS 
+                $stmt= $conx->prepare("SELECT * FROM categorias");
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $resultFinal = [];
 
-            <!-- <select name="categoria">
-                <option value="deporte">Deportes</option>
-                <option value="politica">Politica</option>
-                <option value="accidentes">Accidentes</option>
-                <option value="policiales">Policiales</option>
-            </select> -->
+                while($filas = $result->fetch_object()){
+                    $resultFinalGet[] = $filas;
+                }
+                $stmt->close();
+            ?>
+            <select name="categoria">
+                <?php foreach($resultFinalGet as $filas){  ?>
+                    <option value="<?php echo $filas->id ?>" ><?php echo $filas->nombre ?></option>
+                <?php } ?>
+            </select>
 
             <input type="submit">
         </form>
