@@ -16,6 +16,30 @@ $idFormulario = isset($_POST["idFormulario"]) ? $_POST["idFormulario"] : "0";
 
 if($idObligatorio == "1"){   
     $error = 0;
+    $mensaje = "";
+
+    if(empty($titulo)){
+        $error = 1;
+        $mensaje = "Por favor ingrese un titulo para la noticia";
+    }
+    if(empty($descripcion)){
+        $error = 1;
+        $mensaje = "Por favor ingrese una descripcion de la noticia";
+    }
+    if(empty($fecha)){
+        $error = 1;
+        $mensaje = "Por favor ingrese la fecha de la noticia";
+    }
+    if(empty($textoInformativo)){
+        $error = 1;
+        $mensaje = "Por favor ingrese el texto informativo de la noticia";
+    }
+    //agregar el empty de la imagen
+
+    if(empty($categoria)){
+        $error = 1;
+        $mensaje = "Por favor seleccione la categoria correspondiente de la noticia";
+    }
 
     if($error == 0){
         if($idFormulario == "1"){
@@ -28,11 +52,11 @@ if($idObligatorio == "1"){
         }
         header("Location: ../publicaNoticias/index.php");
         exit();
+    }else{
+        echo $mensaje;
     }
 }
 
-
-//TERMINA ETIQUETA DE PHP
 ?>
 
 <!DOCTYPE html>
@@ -77,6 +101,7 @@ if($idObligatorio == "1"){
                 $stmt->close();
             ?>
             <select name="categoria">
+                <option value="0">Categorias</option>
                 <?php foreach($resultFinalGet as $filas){  ?>
                     <option value="<?php echo $filas->id ?>" ><?php echo $filas->nombre ?></option>
                 <?php } ?>
