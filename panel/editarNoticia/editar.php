@@ -23,45 +23,6 @@ if($editarFormulario == "1"){
     exit();
 }
 
-// if($editarFormulario == "1"){
-    
-//     $error = 0;
-//     $mensaje = "";
-
-//     if(empty($titulo)){
-//         $error = 1;
-//         $mensaje = "Por favor ingrese su titulo";
-//     }
-
-//     if(empty($descripcion)){
-//         $error = 1;
-//         $mensaje = "Por favor ingrese la descripcion";
-//     }
-    
-//     if(empty($fecha)){
-//         $error = 1;
-//         $mensaje = "Por favor ingrese su fecha";
-//     }
-
-//     if($error == 0){
-//         if($idFormulario == 1){
-//             $stmt = $conx->prepare("UPDATE noticias SET titulo = ?, descripcion = ?,  textoInformativo = ?, fecha = ? WHERE id = ?");
-//             $stmt->bind_param("ssssi", $titulo, $descripcion, $textoInformativo, $fecha, $id);
-//             $stmt->execute();
-//             $stmt->close();
-//         }
-//     }else{
-//         echo $mensaje;
-//     }
-//     if ($stmt->affected_rows > 0) {
-//         echo "Actualización exitosa.";
-//     } else {
-//         echo "No se realizó ninguna actualización. Revisa los datos.";
-//     }
-    
-//     header("Location: ../../publica/index.php");
-//     exit();
-// };
 
 $stmt = $conx->prepare("SELECT * FROM noticias WHERE id = ?");
 $stmt->bind_param("i", $id);
@@ -77,22 +38,6 @@ while ($fila = $resultadoSTMT->fetch_object()){
 
 $stmt->close();
             
-
-// if($editarFormulario == "1"){
-//     $mensaje = "";
-//     $stmt = $conx->prepare("UPDATE noticias SET titulo = ?, descripcion = ?,  textoInformativo = ?, fecha = ? WHERE id = ?");
-//     $stmt->bind_param("ssssi", $titulo, $descripcion, $textoInformativo, $fecha, $id);
-
-//     $stmt->execute();
-//     $stmt->close();
-//     header("Location: ../../publica/index.php");
-//     exit();
-// }
-// }else{
-//     echo $mensaje = "Por favor verifique estar editando los campos sin que queden exactamente igual";
-// }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -122,16 +67,6 @@ $stmt->close();
             
             <label>Agregue fecha de la noticia</label>
             <input type="datetime-local" value="<?php echo date('Y-m-d\TH:i:s', strtotime($fila->fecha)); ?>" name="fecha"><br>
-
-            <label>Añadir imagen</label>
-            <h5>añadir imagen</h5>
-
-            <!-- <select name="categoria">
-                <option value="deporte">Deportes</option>
-                <option value="politica">Politica</option>
-                <option value="accidentes">Accidentes</option>
-                <option value="policiales">Policiales</option>
-            </select> -->
 
             <input type="submit" value="Editar">
         </form>

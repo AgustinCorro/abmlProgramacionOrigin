@@ -19,7 +19,7 @@ require_once("../privadaUsuarios/validar.php");
                 <li><a href="../archivosFiltro/agregarNoticias.php">Agregar Noticias</a></li>
                 <li><a href="../archivosFiltro/agregarCategorias.php">Agregar Categorias</a></li>
                 <li><a href="../privadaUsuarios/listado.php">Usuarios</a></li>
-                <li><a href="">Cerrar sesion</a></li>
+                <li><a href="../privadaUsuarios/cerrarSesion.php">Cerrar sesion</a></li>
                 <li><a href="../publicaNoticias/index.php">Listado de Noticias</a></li>
                 <li><a href="../../publica/listadoNoticias.php">Noticias vista publica</a></li>
             </ul>

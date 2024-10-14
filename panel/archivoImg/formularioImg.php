@@ -1,11 +1,9 @@
 <?php
-require_once("../panel/dataBase/db.php");
-
+require_once("../dataBase/db.php");
 $id = isset($_GET["id"]) ? $_GET["id"] : 0;
 
 $stmt = $conx->prepare("SELECT * FROM noticias WHERE id = ?");
-
-$stmt->bind_param("s", $id);
+$stmt->bind_param("i", $id);
 
 $stmt->execute();
 
@@ -16,10 +14,11 @@ while ($fila = $resultadoSTMT->fetch_object()){
     $resultadoFinal[] = $fila;
 };
 
+
 $stmt->close();
 
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,14 +28,11 @@ $stmt->close();
 </head>
 <body>
     <?php foreach($resultadoFinal as $fila){ ?>
-        <div>
-            <h2><?php echo $fila->titulo ?></h2>
-            <h4><?php echo $fila->descripcion ?></h4>
-            <img src="../panel/archivoImg/<?php echo $fila->imagen ?>">
-            <!-- <p><?php echo $fila->fecha ?></p> -->
-            <p><?php echo $fila->textoInformativo ?></p>
-        </div>  
-    <?php }; ?>
-    <button><a href="../publica/listadoNoticias.php">Volver al listado</a></button>
+    <form action="subir.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" value="<?php echo $fila->id ?>" name="id">
+        <input type="file" name="upload" accept=".png">
+        <input type="submit" value="Subir">
+    </form>
+    <?php } ?>
 </body>
 </html>

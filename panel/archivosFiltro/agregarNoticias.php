@@ -50,8 +50,6 @@ if($idObligatorio == "1"){
         $stmt->execute();
         $stmt->close(); 
         }
-        header("Location: ../publicaNoticias/index.php");
-        exit();
     }else{
         echo $mensaje;
     }
@@ -72,7 +70,7 @@ if($idObligatorio == "1"){
         <form action="agregarNoticias.php" method="POST">
             <input type="hidden" name="idObligatorio" value="1">
             <input type="hidden"  name="idFormulario" value="1">
-            <input type="hidden" name="id" value="1">
+            <input type="hidden" name="id">
 
             <label>Agregue titulo</label>
             <input type="text" placeholder="Titulo" name="titulo"><br>
@@ -85,9 +83,7 @@ if($idObligatorio == "1"){
 
             <label>Indique texto de la noticia</label>
             <input type="text" placeholder="Texto" name="textoInformativo"><br>
-            
-            <label>Añadir imagen</label>
-            <h5>añadir imagen</h5>
+
             <?php 
                 //AGREGUE EL SELECT PARA FILTRAR POR ID_CATEGORIA EN LATABLA DE NOTICIAS, HACER EL INSERT CABIAR ESTRUCTURA DE LA TABLA Y CAMBIAR LA CONSULTA EN EL LISTADO DE NOTICIAS 
                 $stmt= $conx->prepare("SELECT * FROM categorias");
@@ -105,10 +101,11 @@ if($idObligatorio == "1"){
                 <?php foreach($resultFinalGet as $filas){  ?>
                     <option value="<?php echo $filas->id ?>" ><?php echo $filas->nombre ?></option>
                 <?php } ?>
-            </select>
+            </select><br>
 
-            <input type="submit">
-        </form>
+            <input type="submit" value="Cargar noticia">
+        </form><br>
+        
         <button><a href="../publicaGeneral/index.php">Volver al menu principal</a></button>
     </div>
 </body>
