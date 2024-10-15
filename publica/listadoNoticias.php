@@ -56,13 +56,15 @@ while($fila = $getStmt->fetch_object()){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../panel/style/listadoNoticias.css">
 </head>
 <body>
     <header>
-
+        <h1>Tú ciudad!</h1>
     </header>
     <nav>
         <form action="listadoNoticias.php" method="POST">
+            <h4>Filtrar noticias</h4>
             <input type="hidden" name="filtro" value="1">
             <select name="idCategoria">
                 <option value="0">Mostrar todos</option>
@@ -70,9 +72,10 @@ while($fila = $getStmt->fetch_object()){
                     <option <?php echo ($fila->id == $idCategoria) ? 'selected' : '' ?> value="<?php echo $fila->id ?>"><?php echo $fila->nombre ?></option>
                 <?php } ?>
             </select>
-            <input type="submit" value="Buscar">
+            <input class="button" type="submit" value="Filtrar">
         </form>
     </nav>
+    <div class="container">
         <?php if($filtro == 0 || $idCategoria == 0){ ?>
             <?php foreach($resultadoFinal as $fila){ ?>
                 <div>
@@ -96,7 +99,7 @@ while($fila = $getStmt->fetch_object()){
                 </div>
             <?php } ?>
         <?php } ?>
-        <br>
-        <button><a href="../publica/index.php">Volver al menu principal</a></button>
+    </div>
+    <button><a href="../publica/index.php">Volver al menu principal</a></button>
 </body>
 </html>

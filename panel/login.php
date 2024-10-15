@@ -33,10 +33,21 @@ if(!empty($email) && !empty($password)){
 //var_dump($usuario);
 
 ?>
-
-
-<form method="POST">
-    <input type="email" name="email" placeholder="Inrese su mail" required>
-    <input type="password" name="password" placeholder="Ingrese su contraseña" required>
-    <input type="submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/login.css">
+</head>
+<body class="body">
+    <form class="form" method="POST">
+        <label>Ingrese su mail</label>
+        <input type="email" name="email" placeholder="Mail" required>
+        <label>Ingrese su contraseña</label>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <input class="button" type="submit">
+    </form>
+</body>
+</html>

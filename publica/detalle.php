@@ -26,6 +26,7 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../panel/style/detalle.css">
 </head>
 <body>
     <?php foreach($resultadoFinal as $fila){ ?>
