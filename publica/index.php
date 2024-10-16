@@ -25,8 +25,13 @@ $stmt->close();
     <link rel="stylesheet" href="../panel/style/indexPublica.css">
 </head>
 <body>
+    <header>
+        <h1>Tú ciudad!</h1>
+    </header>
     <div>
+        <h2>Cliente:</h2>
         <button><a href="../publica/listadoNoticias.php">Ir al listado de noticias</a></button>
+        <h3>Administrador</h3>
         <button><a href="../panel/login.php">Ingresar como administrador</a></button>
         <button><a href="../panel/publicaGeneral/index.php">Volver al panel de admin</a></button>
     </div>

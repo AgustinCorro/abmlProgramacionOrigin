@@ -63,6 +63,7 @@ if($idObligatorio == "1"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../style/agregarNoticia.css">
 </head>
 <body>
     <p>Agregue una nueva noticia</p>
@@ -73,16 +74,16 @@ if($idObligatorio == "1"){
             <input type="hidden" name="id">
 
             <label>Agregue titulo</label>
-            <input type="text" placeholder="Titulo" name="titulo"><br>
+            <input type="text" placeholder="Titulo" name="titulo">
 
             <label>Agregue una descrpcion</label>
-            <input type="text" placeholder="Descricion" name="descripcion"><br>
+            <input type="text" placeholder="Descricion" name="descripcion">
 
             <label>Agregue fecha de la noticia</label>
-            <input type="datetime-local" placeholder="Fecha" name="fecha"><br>
+            <input type="datetime-local" placeholder="Fecha" name="fecha">
 
             <label>Indique texto de la noticia</label>
-            <input type="text" placeholder="Texto" name="textoInformativo"><br>
+            <textarea type="text" placeholder="Texto" name="textoInformativo"></textarea>
 
             <?php 
                 //AGREGUE EL SELECT PARA FILTRAR POR ID_CATEGORIA EN LATABLA DE NOTICIAS, HACER EL INSERT CABIAR ESTRUCTURA DE LA TABLA Y CAMBIAR LA CONSULTA EN EL LISTADO DE NOTICIAS 

@@ -45,15 +45,16 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../style/usuarios.css">
 </head>
 <body>
 
     <a href="formulario.php">Nuevo usuario</a><br>
 
-    <form>
+    <!-- <form>
         <input type="number" name="edad" placeholder="Ingrese una edad">
         <input type="submit">
-    </form>
+    </form> -->
 
     <h3>Tabla de mi base de datos (traidos mediante un SELECT)</h3>
     <table>
@@ -86,5 +87,5 @@ $stmt->close();
             <?php } ?>
         </tbody>
     </table>
-</body>
+    <a class="menu "href="../publicaGeneral/index.php">Volver al menu principal</a>
 </html>

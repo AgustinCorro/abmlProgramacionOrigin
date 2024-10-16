@@ -101,28 +101,40 @@ if($usuario === null){
 
 
 ?>
-
-<form method="POST">
-
-    <input type="hidden" value="1" name="envio_formulario">
-
-    <input type="hidden" name="idFormulario" value="0<?php //echo $idFormulario ?>">
-
-    <label>Ingrese su nombre</label>
-    <input type="text" value="<?php echo $nombre ?>" name="nombre">
-    <?php if($id == 0){ ?>
-        <br><label>Ingrese su fecha de creacion</label><br>
-        <input type="datetime-local" value="<?php echo $fecha_creacion ?>" name="fecha_creacion">
-    <?php }else{ ?>
-        <input type="hidden" value="<?php echo $fecha_creacion ?>" name="fecha_creacion">
-    <?php } ?>
-
-    <br><label>Ingrese su descripcion</label><br>
-    <textarea name="descripcion"><?php echo $descripcion ?></textarea>
-
-    <br><label for="">Inrese su edad</label><br>
-    <input type="number" value="<?php echo $edad ?>" name="edad">
-
-    <input type="submit">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/usuarioInsertado.css">
+</head>
+<body>
     
-</form>
+    <form method="POST">
+    
+        <input type="hidden" value="1" name="envio_formulario">
+    
+        <input type="hidden" name="idFormulario" value="0<?php //echo $idFormulario ?>">
+    
+        <label>Ingrese su nombre</label>
+        <input type="text" value="<?php echo $nombre ?>" name="nombre">
+        <?php if($id == 0){ ?>
+            <br><label>Ingrese su fecha de creacion</label><br>
+            <input type="datetime-local" value="<?php echo $fecha_creacion ?>" name="fecha_creacion">
+        <?php }else{ ?>
+            <input type="hidden" value="<?php echo $fecha_creacion ?>" name="fecha_creacion">
+        <?php } ?>
+    
+        <br><label>Ingrese su descripcion</label><br>
+        <textarea name="descripcion"><?php echo $descripcion ?></textarea>
+    
+        <br><label for="">Inrese su edad</label><br>
+        <input type="number" value="<?php echo $edad ?>" name="edad">
+    
+        <input type="submit">
+        
+    </form>
+    <a href="../privadaUsuarios/listado.php">Volver al listado</a>
+</body>
+</html>

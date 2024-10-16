@@ -68,18 +68,18 @@
 
 .volver{
     position: fixed;
-    bottom: 20px; /* A 20px de la parte inferior de la pantalla */
-    right: 20px;  /* A 20px del borde derecho */
+    bottom: 20px; 
+    right: 20px;  
     background-color: #2f2f2f;
     color: white;
     padding: 10px 20px;
     border: none;
-    border-radius: 50px; /* Borde redondeado */
+    border-radius: 50px; 
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     transition: background-color 0.3s ease;
 }
 
@@ -90,7 +90,7 @@
 }
 
 .vovler:hover {
-    background-color: #747373; /* Color más oscuro al hacer hover */
+    background-color: #747373; 
 }
 
 .eliminar{
@@ -127,8 +127,12 @@
 .cargar .a{
     text-decoration: none;
     color: white;
+    background-color: #3F51B5;
 }
 
+.a:hover{
+    background-color: #3F51B5;
+}
 .titulo{
     display: flex;
     height: 20vh;
@@ -141,9 +145,9 @@
     font-family: fangsong;
     font-size: xxx-large;
 }
-/* Responsive: ajustar el botón en pantallas pequeñas */
+
 @media (max-width: 600px) {
-    .fixed-button {
+    button {
         font-size: 14px;
         padding: 8px 16px;
     }
