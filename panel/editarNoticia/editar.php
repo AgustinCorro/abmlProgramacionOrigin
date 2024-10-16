@@ -46,6 +46,7 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../style/editarNoticia.css">
 </head>
 <body>
     <?php foreach($resultadoFinal as $fila){ ?>
@@ -63,7 +64,7 @@ $stmt->close();
 
             
             <label>Indique texto de la noticia</label>
-            <input type="text" value="<?php echo $fila->textoInformativo ?>" name="textoInformativo"><br>
+            <textarea type="text" value="<?php echo $fila->textoInformativo ?>" name="textoInformativo"></textarea>
             
             <label>Agregue fecha de la noticia</label>
             <input type="datetime-local" value="<?php echo date('Y-m-d\TH:i:s', strtotime($fila->fecha)); ?>" name="fecha"><br>
@@ -72,5 +73,6 @@ $stmt->close();
         </form>
     </div>
     <?php } ?>
+    <button><a href="../publicaNoticias/index.php">Volver al listado</a></button>
 </body>
 </html>
