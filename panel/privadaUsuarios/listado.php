@@ -79,7 +79,7 @@ $stmt->close();
                     <td>
                         <a href="formulario.php?id=<?php echo $fila->id ?>">Editar usuario</a>
                         <form action="eliminado.php" method="POST">
-                            <input type="hidden" value="<?php $fila->id ?>" name="id">
+                            <input type="hidden" value="<?php echo $fila->id ?>" name="id">
                             <input type="submit" value="Eliminar">
                         </form>
                     </td>
