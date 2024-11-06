@@ -4,17 +4,19 @@ require_once("../panel/dataBase/db.php");
 $tituloABuscar = isset($_POST["tituloABuscar"]) ? $_POST["tituloABuscar"] : "";
 $filtroInput = isset($_POST["filtroInput"]) ? $_POST["filtroInput"] : 0;
 
+var_dump($tituloABuscar); 
 
 if ($filtroInput == 1 && !empty($tituloABuscar)) {
-    $tituloABuscar = "%$tituloABuscar%";
-    $sql = "SELECT * FROM noticias WHERE titulo LIKE ?";
+    $tituloABuscar = trim($tituloABuscar);
+    $tituloABuscar2 = "%$tituloABuscar%";
+    $sql = "SELECT N.id, N.titulo, N.descripcion, N.imagen, N.fecha FROM noticias N WHERE titulo LIKE ? ";
     $stmt = $conx->prepare($sql);
 
     if ($stmt === false) {
         echo "Error en la preparación de la consulta: " . $conx->error;
     }
 
-    $stmt->bind_param("s", $tituloABuscar);
+    $stmt->bind_param("s", $tituloABuscar2);
     $stmt->execute();
 
     $getStmtResultNews = $stmt->get_result();
@@ -26,6 +28,9 @@ if ($filtroInput == 1 && !empty($tituloABuscar)) {
 
     $stmt->close();
 }
+var_dump($getStmtResultNews);  
+
+var_dump($resultadoGetStmtFinalNew);
 ?>
 
 <!DOCTYPE html>
