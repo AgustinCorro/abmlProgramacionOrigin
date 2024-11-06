@@ -4,6 +4,7 @@ $filtro = isset($_POST["filtro"]) ? $_POST["filtro"] : "";
 
 $idCategoria = isset($_POST["idCategoria"]) ? $_POST["idCategoria"] : 0;
 
+
 //var_dump($_POST);
 
 if($filtro == 0 || $idCategoria == 0){
@@ -63,17 +64,26 @@ while($fila = $getStmt->fetch_object()){
         <h1>Tú ciudad!</h1>
     </header>
     <nav>
-        <form action="listadoNoticias.php" method="POST">
-            <h4>Filtrar noticias</h4>
-            <input type="hidden" name="filtro" value="1">
-            <select name="idCategoria">
-                <option value="0">Mostrar todos</option>
-                <?php foreach($resultadoGetStmt as $fila){  ?>
-                    <option <?php echo ($fila->id == $idCategoria) ? 'selected' : '' ?> value="<?php echo $fila->id ?>"><?php echo $fila->nombre ?></option>
-                <?php } ?>
-            </select>
-            <input class="button" type="submit" value="Filtrar">
-        </form>
+        <div class="select">
+            <form action="listadoNoticias.php" method="POST">
+                <h4>Filtrar noticias</h4>
+                   <input type="hidden" name="filtro" value="1">
+                <select name="idCategoria">
+                    <option value="0">Mostrar todos</option>
+                    <?php foreach($resultadoGetStmt as $fila){  ?>
+                        <option <?php echo ($fila->id == $idCategoria) ? 'selected' : '' ?> value="<?php echo $fila->id ?>"><?php echo $fila->nombre ?></option>
+                    <?php } ?>
+                </select>
+                <input class="button" type="submit" value="Filtrar">
+            </form>
+        </div>
+        <div class="input">
+            <form action="buscador.php" method="POST">
+                <input type="hidden" name="filtroInput" value="1">
+                <input type="text" placeholder="Ingrese titulo..." name="tituloABuscar">
+                <input type="submit" value="Buscar">
+            </form>
+        </div>
     </nav>
     <div class="container">
         <?php if($filtro == 0 || $idCategoria == 0){ ?>
@@ -83,7 +93,7 @@ while($fila = $getStmt->fetch_object()){
                     <h4><?php echo $fila->descripcion ?></h4>
                     <img src="../panel/archivoImg/<?php echo $fila->imagen ?>">
                     <p><?php echo $fila->fecha ?></p> 
-                    <!-- con el a veo el detalle de la noticia en detalle.php -->
+                    
                     <a href="../publica/detalle.php?id=<?php echo $fila->id ?>">Ver detalle</a>
                 </div>  
             <?php } ?>
@@ -94,7 +104,7 @@ while($fila = $getStmt->fetch_object()){
                     <h4><?php echo $filaFiltro->descripcion ?></h4>
                     <img src="../panel/archivoImg/<?php echo $filaFiltro->imagen ?>">
                     <p><?php echo $filaFiltro->fecha ?></p> 
-                    <!-- con el a veo el detalle de la noticia en detalle.php -->
+                    
                     <a href="../publica/detalle.php?id=<?php echo $filaFiltro->id ?>">Ver detalle</a>
                 </div>
             <?php } ?>
